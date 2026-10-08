@@ -1,0 +1,71 @@
+{
+  "name": "@helixfi/sdk",
+  "version": "0.1.0",
+  "description": "TypeScript SDK for HELIX on Solana: the token standard, DEX, launchpad and bridge. PDAs, account decoders, instruction builders, exact quotes, events and errors.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "keywords": [
+    "solana",
+    "helix",
+    "token",
+    "dex",
+    "launchpad",
+    "bonding-curve",
+    "hooks",
+    "sdk"
+  ],
+  "homepage": "https://github.com/HelixFi/sdk#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HelixFi/sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HelixFi/sdk/issues"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20.18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit -p .",
+    "test": "vitest run",
+    "prepublishOnly": "npm run typecheck && npm run build && npm test"
+  },
+  "peerDependencies": {
+    "@solana/kit": "^8.4.0"
+  },
+  "devDependencies": {
+    "@solana/kit": "^8.4.0",
+    "@solana-program/system": "^0.15.0",
+    "@types/node": "^22",
+    "litesvm": "^1.5.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.7"
+  }
+}
